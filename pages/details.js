@@ -1,7 +1,7 @@
 let url = new URLSearchParams(location.search);
 let id = url.get("id");
 
-let targedCard = (array, key) => array.filter(object => object.id == key);
+let targedCard = (array, key) => array.filter(object => object.id == key); //array (el array en el que se buscará) y key (el valor de identificación que se está buscando)
 let targedMovie = targedCard(movies, id)[0]; // Aca se contiene el objeto de la pelicula selecionada 
 let asideContent = (object) => 
 `<img class="w-[90%] lg:w-full" src="${object.image}" alt="Imagen de Pelicula ${object.title}">
@@ -32,42 +32,39 @@ let asideContent = (object) =>
 let createAside = object => {
     let aside = document.createElement("aside");
     aside.className = "flex flex-wrap justify-center lg:w-[45%]";
-    aside.style = ""
-    aside.innerHTML = asideContent(object);
+    aside.innerHTML = asideContent(object); 
     return aside;
 }
 
-let asideElement = createAside(targedMovie)
+let asideElement = createAside(targedMovie)   // aside contenido 
 
-let insertarContenidoAside = nodo => {
+let insertarContenidoAside = nodo => {    // insertar contenido a un div capturado 
     let main = document.getElementById("mainContainer");
     main.classList.add("flex", "flex-wrap", "justify-center");
-    main.appendChild(nodo);
+    main.appendChild(nodo); 
     return main;
 }
 
 let main = insertarContenidoAside(asideElement)
 
 let generos = targedMovie.genres
-console.log(generos) //Arreglos con los generos de la pelicula selecionada 
 let createGenresNodes = array => array.map(genre => {
     let createH5 = document.createElement("h5");
     createH5.innerText = genre;
     createH5.className = "";
-    // console.log(createH5); 
     return createH5;
 });
 
 let h5Element = createGenresNodes(generos)
-console.log(h5Element)
+// console.log(h5Element)
 
 let divGeneros = array => {
     let newDiv = document.createElement("div");
     newDiv.className = ""
-    array.forEach(nodo => {
+    array.forEach(nodo => {  //Solo ejecuta, no retorna
         newDiv.appendChild(nodo);
     });
-    return newDiv
+    return newDiv // Me devuelve el div con los h5 element
 }
 
 let newDiv = divGeneros(h5Element).outerHTML //Nodo HTML Contenedor de los generos de la pelicula selecionada
@@ -102,7 +99,7 @@ let sectionContent =(nodo, object) => `
     </table>
 </div> `
 
-let crearSection = (nodo, object) => {
+let crearSection = (nodo, object) => {  //array (el array en el que se buscará) y object (el objeto de identificación que se está buscando)
     let sectionElement = document.createElement("section");
     sectionElement.className = "flex flex-wrap justify-center w-full text-lg p-2 lg:w-[45%]";
     sectionElement.innerHTML = sectionContent(nodo, object);
@@ -110,4 +107,4 @@ let crearSection = (nodo, object) => {
     return sectionElement
 }
 
-let sectionElement = crearSection(newDiv, targedMovie)
+let sectionElement = crearSection(newDiv, targedMovie)  //el contendor de los generos de la pelicula selecionada, targed es el objeto que contiene la informacion de la pelicula selecionada
