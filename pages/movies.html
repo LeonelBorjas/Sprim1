@@ -9,7 +9,7 @@
     <title>MOVIES</title>
 </head>
 
-<body class="bg-black text-white">
+<body class="bg-black text-white flex flex-col min-h-screen">
     <header
         class="bg-[#414141] flex text-xs justify-between items-center border-white border-solid border-2 mt-8 mb-6 lg:text-2xl">
         <picture class="flex items-center lg:gap-4 lg:ml-3 lg:my-3">
@@ -20,10 +20,10 @@
         <nav class="flex pr-2 space-x-1 lg:gap-4 lg:mr-5">
             <a href="../index.html">HOME</a>
             <a class="border-white border-solid border-2 px-1" href="#">MOVIES</a>
-            <a href="#">FAVS</a>
+            <a href="./favs.html">FAVS</a>
         </nav>
     </header>
-    <main class="">
+    <main class="flex-1">
         <h2 class="text-center mb-5 bg-[#8c8c8c] text-2xl lg:text-4xl">MOVIES</h2>
         <div id="generarGeneros">
         <div id="filtros" class="flex justify-around p-5 ">
@@ -33,12 +33,11 @@
         <div id="container" class="flex flex-wrap gap-5 justify-center text-center ">
         </div>
     </main>
-    <footer>
-        <P class="text-center mt-3 lg:mt-10 lg:mb-10 ">MindHub - Cohort N54 - Leonel Borjas</P>
+    <footer class="">
+        <P class="text-center mb-5 mt-10 lg:mb-10">MindHub - Cohort N54 - Leonel Borjas</P>
     </footer>
 
-    <script src="datosmoviestack.js"></script>
-    <script type="module" src="./main.js"></script>
+    <script type="module" src="../js/main.js"></script>
 </body>
 
 </html>

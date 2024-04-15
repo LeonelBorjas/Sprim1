@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="shortcut icon" href="..//assets/img/Moviestack_favicon.png" type="Icono de Pagina">
-    <title>DETAILS</title>
+    <link rel="shortcut icon" href="/assets/img/Moviestack_favicon.png" type="Icono de Pagina">
+    <title>FAVS</title>
 </head>
 
-<body class="bg-black text-white flex flex-col min-h-screen">
-    <header
-        class="bg-[#414141] flex text-xs justify-between items-center border-white border-solid border-2 mt-8 mb-6 lg:text-2xl">
+<body class="bg-black text-white flex flex-col min-h-screen ">
+    <header class="bg-[#414141] flex text-xs justify-between items-center border-white border-solid border-2 mt-8 mb-6
+        lg:text-2xl">
         <picture class="flex items-center lg:gap-4 lg:ml-3 lg:my-3">
             <img class="w-8 rounded-[50%] border-white border-solid border-2 m-1"
                 src="../assets/img/Moviestack_isotipo.png" alt="Isotipo de la Pagina">
@@ -19,18 +19,19 @@
         </picture>
         <nav class="flex pr-2 space-x-1 lg:gap-4 lg:mr-5">
             <a href="../index.html">HOME</a>
-            <a class="border-white border-solid border-2 px-1" href="#">MOVIES</a>
-            <a href="#">FAVS</a>
+            <a class="" href="./movies.html">MOVIES</a>
+            <a class="border-white border-solid border-2 px-1" href="#">FAVS</a>
         </nav>
     </header>
-    <main id="mainContainer" class="lg:flex lg:justify-around flex-1">
-
+    <main class="flex-1">
+        <h1 class="text-center mb-16 bg-[#8c8c8c] text-4xl">FAVORITES</h1>
+        <div id="container" class="flex flex-wrap gap-5 justify-center text-center "></div>
     </main>
     <footer>
         <P class="text-center mb-5 mt-10 lg:mb-10 ">MindHub - Cohort N54 - Leonel Borjas</P>
     </footer>
+    <script type="module" src="../js/favs.js"></script>
     
-    <script src="../js/details.js"></script>
 </body>
 
 </html>

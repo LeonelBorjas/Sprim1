@@ -1,10 +1,19 @@
 let url = new URLSearchParams(location.search);
 let id = url.get("id");
 
+
+fetch ("https://moviestack.onrender.com/api/movies",{
+    headers: {"x-api-key": "0ff70d54-dc0b-4262-9c3d-776cb0f34dbd"}
+})
+.then(info => info.json())
+.then (peliculas => { peliculas.movies;
+let movies = peliculas.movies 
+
+
 let targedCard = (array, key) => array.filter(object => object.id == key); //array (el array en el que se buscará) y key (el valor de identificación que se está buscando)
 let targedMovie = targedCard(movies, id)[0]; // Aca se contiene el objeto de la pelicula selecionada 
 let asideContent = (object) => 
-`<img class="w-[90%] lg:w-full" src="${object.image}" alt="Imagen de Pelicula ${object.title}">
+`<img class="w-[90%] lg:w-full" src="https://moviestack.onrender.com/static/${object.image}" alt="Imagen de Pelicula ${object.title}">
     <h4 class="w-full font-bold text-center text-lg mt-4 mb-5 md:mt-9">Movie Details</h4>
     <div class=" ">
         <table class="w-[100%] md:mt-2">        
@@ -108,3 +117,5 @@ let crearSection = (nodo, object) => {  //array (el array en el que se buscará)
 }
 
 let sectionElement = crearSection(newDiv, targedMovie)  //el contendor de los generos de la pelicula selecionada, targed es el objeto que contiene la informacion de la pelicula selecionada
+
+})
