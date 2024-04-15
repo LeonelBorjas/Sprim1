@@ -17,7 +17,7 @@ export let crearSelect = array => {   // Conteneder de creacion de select y Opti
     let select = document.createElement("select");
     let filtros = document.querySelector("#filtros")
     selectContainer.className = "bg-black w-[45%] rounded-md text-center h-8"
-    select.innerHTML = `<option selected>All</option>`;
+    select.innerHTML = `<option value="" selected>All</option>`;
     select.className = "bg-black w-full  rounded-md text-center  border ";
     select.name = "Generos";
     select.id = "generarGeneros";

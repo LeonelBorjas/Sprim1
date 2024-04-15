@@ -1,5 +1,5 @@
 import { createCards } from "./function.js";
-
+let arrayFavoritos = JSON.parse(localStorage.getItem("Favoritos")) || [];
 let favsCards = objeto =>  `  
     <img class="mb-3" src="https://moviestack.onrender.com/static/${objeto.image}" alt="Imagen de Pelicula ${objeto.title}">
     <h3 class="font-bold">${objeto.title}</h3>
@@ -59,24 +59,51 @@ fetch("https://moviestack.onrender.com/api/movies", {
     // Mostrar las películas favoritas
     favCardContainer(peliculasFavoritas, moviesHtml)
 
+    // Función para actualizar los íconos de favoritos
+    function updateFavoritesIcons() {
+        // Cargar estado de favoritos después de renderizar las tarjetas filtradas o de búsqueda
+        arrayFavoritos.forEach(id => {
+            const button = document.querySelector(`button[data-favid="${id}"]`);
+            if (button) {
+                const heartIcon = button.querySelector('img');
+                heartIcon.src = '../assets/img/corazonlleno.png';
+            }
+        });
+    }
+
+    // Cargar estado de favoritos al cargar la página
+    arrayFavoritos.forEach(id => {
+        const button = document.querySelector(`button[data-favid="${id}"]`);
+        if (button) {
+            const heartIcon = button.querySelector('img');
+            heartIcon.src = '../assets/img/corazonlleno.png';
+        }
+    });
+
+    // Evento de clic en los botones de favoritos
+    moviesHtml.addEventListener("click", (event) => {
+        let datasetFavid = event.target.dataset.favid;
+        if (datasetFavid) {
+            console.log("Es un boton");
+            const button = event.target.closest('button');
+            const heartIcon = button.querySelector('img');
+
+            if (!arrayFavoritos.includes(datasetFavid)) {
+                arrayFavoritos.push(datasetFavid);
+                heartIcon.src = '../assets/img/corazonlleno.png';
+            } else {
+                arrayFavoritos = arrayFavoritos.filter(id => id != datasetFavid);
+                heartIcon.src = '../assets/img/heart.png';
+            }
+            localStorage.setItem("Favoritos", JSON.stringify(arrayFavoritos));
+        }
+
+        console.log(arrayFavoritos);
+    });
 });
 
 
-// peliculasFavoritas.forEach(element => {
-//     let divCont = document.createElement("div");
-//     divCont.className = "bg-[#414141] w-[86%] rounded-2xl flex flex-col gap-2 border-solid border p-2 lg:w-1/5 lg:mt-5 ";
-//     divCont.innerHTML = createCards(element);
-//     moviesHtml.appendChild(divCont);
-// });
-// moviesHtml.addEventListener('click', event => {
-//     let favId = event.target.dataset.fav;
-//     // console.log(favId);
-//     let favToRemove = event.target.closest(".card"); 
-//     // console.log([favToRemove]); // me arroja todo el nodo de la card
-//     favToRemove.remove();
-//     localStorage.removeItem(favId);
-//     console.log(favIdMovies);
-// })
+
 
 
 

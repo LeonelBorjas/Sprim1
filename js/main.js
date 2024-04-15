@@ -39,7 +39,6 @@ fetch ("https://moviestack.onrender.com/api/movies",{
     let generos = movies.filter(movie => movie.genres); // array con generos, todos los objetos del array movies tienen generos
 
     let generoFiltro = generosFiltro(generos) // Contiene los 14 generos unicos de las peliculas utilizando un flat para eliminarlos
-    console.log(generoFiltro);
 
     let selectElement = crearSelect(generoFiltro);
     let remplazaMainContent = nodo => {
